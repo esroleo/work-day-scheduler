@@ -22,7 +22,6 @@ textarea{
 }
 
 
-
 .jumbotron {
 	text-align: center;
 	background-color: transparent;
@@ -41,20 +40,30 @@ textarea{
 }
 
 .row {
+	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr repeat(3, 2fr);  /* Create a 4X4 grid with the first column smaller than the others 3 */
-	grid-template-rows: repeat(4, 1fr); /* 4 rows of equal size */
-	gap: 10px 10px; /* Gap on x and y grid */
+	grid-template-columns: 1fr 15fr 2fr;  
+	grid-template-rows: repeat(24, 2fr);
+	
 	white-space: pre-wrap;
-	height: 80px;
+	height: 120px;
 	border-top: 1px solid white;;
 }
 
 .hour {
-		background-color: #ffffff;
-		color: #000000;
-		border-top: 1px dashed #000000;
-		}
+
+	/* Grid items */
+	grid-column: 1 / span 1;
+	grid-row: 1 / span 1;  
+	text-align: right;
+	/* Styling items */
+	background-color: #ffffff;
+	color: #000000;
+	border-top: 1px dashed #000000;
+	margin-bottom: 30px;
+
+}
+
 
 .past {
 	background-color: #d3d3d3;
