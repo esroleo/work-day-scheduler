@@ -16,9 +16,36 @@
 
 // Function to create grid system
 
+/*
+<div class="row">
+<div class="col">
+  1 of 3
+</div>
+<div class="col-6">
+  2 of 3 (wider)
+</div>
+<div class="col">
+  3 of 3
+</div>
+</div>
+
+</div>
+</div>
+*/
+
+
+
 function createGridSystem() {
+    // Create the row container for our grid bootstrap system
     var row = $("<div></div>").addClass("row");
-    $(row).appendTo(".container");
+    $( '.container-fluid' ).append(row);   
+
+    var gridHour = $("<div></div>").addClass("col").text('Test');
+    var gridDescription = $("<div></div>").addClass("col-6").text('Test');
+    var gridSave = $("<div></div>").addClass("col").text('Test');
+    $( '.row' ).append(gridHour);   
+    $( '.row' ).append(gridDescription);   
+    $( '.row' ).append(gridSave);   
 }
 
 // Function to load current time to the hour grid area
@@ -27,6 +54,9 @@ function loadCurrentTime() {
 
     var spanGridValue = ""
 
+
+
+    /*
     // Create a 24 hours system using jQuery and CSS
     for (i=9; i <= 17; i++) { // This is 9:00 AM to 5:00 PM = 8 hours
        var divHourItem = $("<div></div>").addClass("hour"+i); // later we need to set attributes
@@ -60,6 +90,7 @@ function loadCurrentTime() {
        console.log(divHourItem);
        console.log(spanGridValue);
     }
+    /*
 
     //$(divHour).text(9 + ":00");
    // $(divHour).css("grid-column", "1 / span 1").css("grid-row", "1 / span 1");
