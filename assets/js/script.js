@@ -40,13 +40,27 @@ function createGridSystem() {
     var row = $("<div></div>").addClass("row");
     $( '.container-fluid' ).append(row);   
 
-    var gridHour = $("<div></div>").addClass("col").text('Test');
+    var gridHour = $("<div></div>").addClass("col hour").text('Test');
     var gridDescription = $("<div></div>").addClass("col-6").text('Test');
-    var gridSave = $("<div></div>").addClass("col").text('Test');
+    var gridSave = $("<div></div>").addClass("col btn-save").text('Test');
+
+
+    //var gridSaveButtonEl = $("<button></button>").text('Test');
     $( '.row' ).append(gridHour);   
     $( '.row' ).append(gridDescription);   
     $( '.row' ).append(gridSave);   
+   
 }
+
+$(document).ready(function(){
+ 
+    $('.btn-save').click(function(){
+     //window.location = $(this).find("a").attr("href");
+     console.log("Clicked");
+    });
+    
+   });
+
 
 // Function to load current time to the hour grid area
 
