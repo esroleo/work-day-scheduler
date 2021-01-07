@@ -42,13 +42,14 @@ function createGridSystem() {
 
     var gridHour = $("<div></div>").addClass("col hour").text('Test');
     var gridDescription = $("<div></div>").addClass("col-6").text('Test');
-    var gridSave = $("<div></div>").addClass("col btn-save").text('Test');
-
-
+    var gridSave = $("<div></div>").addClass("col btn-save");
+    var spanIcon = $("<span></span>").addClass("oi oi-check text-center mb-2 d-none d-lg-block mt-4")
+    
     //var gridSaveButtonEl = $("<button></button>").text('Test');
     $( '.row' ).append(gridHour);   
     $( '.row' ).append(gridDescription);   
-    $( '.row' ).append(gridSave);   
+    $( '.row' ).append(gridSave); 
+    $( '.btn-save ').append(spanIcon);
    
 }
 
