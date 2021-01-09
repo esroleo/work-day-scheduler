@@ -1,6 +1,30 @@
 
 $(document).ready(function() { 
 
+  // *** START of moment.js code
+
+  // Get current time in exactly as shown on mockup using moment.js!
+  // dddd = Today's date during the week
+  // [, ] escapte moment.js and add/append/concate text
+  // MMMM is this month in full name
+  // Do is todays date on this month
+  const headerDateTime = moment().format('dddd [, ] MMMM Do');
+
+  // Display the headerDateTime on the header section
+  $('#currentDay').text(headerDateTime);
+
+  // Get current hour to be passed used on taskRowColor(momentHour) function.
+
+  let momentHour = moment().format('H');
+  console.log(momentHour);
+
+
+
+  // *** END of moment.js code
+
+
+
+
   // Get dailyPlannerContainer element using Jquery
   // Contain all other children elements of the day planner app
   let $dailyPlannerContainer = $('#dailyPlannerContainer');
@@ -119,8 +143,8 @@ $(document).ready(function() {
       // *** START for every hour update the color with a function ***
       // *** Update color on each loop iteration until finished ***
 
-      // set row color based on time
-      taskRowColor($rowContainer, hourOfDay);
+      // set row color based on time "for loop hour of the day"
+      taskRowColor(hourOfDay);
     
       // *** END of structure of grid appends ***
 
@@ -135,10 +159,17 @@ $(document).ready(function() {
     };
   };
 
-  function taskRowColor($rowContainer,hourOfDay) {
+  function taskRowColor(hourOfDay) {
 
   
-    console.log($rowContainer);
+    
+
+    // Based on the "hour of the day" which is the hour of the row
+    // If the hourOfDay is less than currentTime moment.js then lightgreyy
+    // Else if hourOfDay > currentTime than the currentTime moment.js then lightgreen
+    // else current hour will become red which is inminent
+
+    var hourIndex = 0;
     
 
     if (hourOfDay < 10) {
@@ -148,17 +179,16 @@ $(document).ready(function() {
      //$rowContainer.css("background-color","lightgrey");
       //$descriptionColumn.css("background-color","lightgrey");
      
-      $( "#input-0" ).css("background-color","lightgrey"); // Note IDs must be unique per page.
+      $( "#input-" + hourIndex ).css("background-color","lightgrey"); // Note IDs must be unique per page.
 
       
-
-      
+     
          
     } else {
 
       console.log("I am else");
       //$rowContainer.css("background-color","purple");
-      $( "#input-0" ).css("background-color","#77dd77"); // Note IDs must be unique per page.
+      $( "#input-" + hourIndex).css("background-color","#77dd77"); // Note IDs must be unique per page.
       //$descriptionColumn.css("background-color","purple");
     };
   };
