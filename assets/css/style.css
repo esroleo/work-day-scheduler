@@ -14,6 +14,14 @@ body {
 		
   }
 
+  /* Modify bootstrap columns to remove padding */
+
+  .col-md-2, .col-md-9, .col-md-1 {
+	  padding-right: 0px;
+	  padding-left: 0px;
+
+  }
+
   .jumbotron {
 	text-align: center;
 	background-color: transparent;
@@ -21,16 +29,19 @@ body {
 	border-radius: 0;
 	border-bottom: 10px solid black;
   }
-  
+
+	  
   .description{
 	white-space: pre-wrap;
   }
-  
-  .time-block{
-	text-align: center;
-	border-radius: 15px;
+
+  /* Bootstrap row */
+
+  .row {
+	  margin-bottom: 2px;
   }
-  
+
+  /* Replace bootstrap row but after bootstrap has been defined for record keeping */
   .nonBootStrapRow {
 	white-space: pre-wrap;
 	height: 80px;
@@ -38,10 +49,32 @@ body {
 	
   }
   
+  /* Hourly Column style */
+  .time-block{ 
+	text-align: center;
+	/*border-radius: 15px; did not like this design*/
+  }
+
+  
+/* Style the input element to take all space of the parent element */
+.taskDescriptionSpan {
+	color: black;  
+	font-size: 12pt;
+	height:100%;
+	width: 100%;
+  }
+
+  /* Remove input borders */
+  input {
+	outline: none;
+  }
+  
+ 
   .hour {
 	background-color: #ffffff;
 	color: #000000;
-	border-top: 1px dashed #000000;
+	/* border-top: 1px dashed #000000;  did not like the dashed design */
+	border-top: 1px solid #000000;  
   }
   
   .past {
@@ -58,13 +91,22 @@ body {
 	background-color: #77dd77;
 	color: white;
   }
+
   
-  .saveBtn {
+  
+  
+  .saveBtn { 
 	border-left: 1px solid black;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
 	background-color: #06AED5;
 	color: white;
+	
+	/* Align button in the middle */
+
+	text-align: center;
+
+
   }
 
   .btn-save {

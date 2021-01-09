@@ -16,7 +16,9 @@ $(document).ready(function() {
       // Generate an index that represnt 0 as first hour of the day
       // Index will be used on the span of the hour column "text"
       let hourIndex = hourOfDay - 9; // index on 9AM is = 0
-  
+
+      // ********* START of the row div columns *********
+
       // Generate row div columns.
       // Each row is an hour of the day.
       let $rowContainer = $("<div></div>") // Create a div (looped) to hold the rows
@@ -25,9 +27,13 @@ $(document).ready(function() {
       .addClass('nonBootStrapRow') 
       .attr('hour-index',hourOfDay); // hourOfDay is the row hour
 
+      // ********* END of the row div columns *********  
+
+      // ********* START of the hour column *********
+
       // Append the hour of the row
       var $columnHour = $("<div></div>")
-      .addClass("col-md-2 hour")
+      .addClass("col-md-2 hour time-block")
 
       // Create a span to hold the text or horu of the day for the hour column cell
       let $columnHourSpan = $('<span></span>')
@@ -48,18 +54,77 @@ $(document).ready(function() {
           break  
       }
 
-      // Based on the hourOfDay switch we will assign the text to the columnHour.
+      // Based on the hourOfDay switch we will assign the text to the columnHour
       $columnHour.text(columnHourly);
 
+     // ********* END of the hour column 
 
-      // Appending section area START // 
+     // ********* START of description task column section *********
+
+      // Create description column as an input elemnt
+
+      let $descriptionColumn = $("<div></div>")
+      .addClass("col-md-9");
+
+      // Create the span of descriptionColumn to hold a input element
+      // Here we will use the index which will be in th 0-8 format
+      // This requrired to keep a proper index array
+      // The index will be index - hourOfDay
+      // We will also keep track of the hourIndex for saving or button events
+
+      let $descriptionColumnSpan = $("<input></input>")
+      .addClass('description taskDescriptionSpan') // Use provided css style class
+      .attr('type', 'text') // Text input type
+      .attr('id', `input-${hourIndex}`) // Create a index of the input for track purposes
+      .attr('hour-index', hourIndex);
+      
+      // Display task that was "get" from the local storage
+      // We are going to use the hourIndex to access the task.
+      $descriptionColumnSpan.val('Test 1234');
+
+      // ********* END of description task column section *********
+
+      // ********* START of save button column section *********
+
+      let $saveButtonColumn = $("<div></div>")
+      .addClass('col-md-1 saveBtn') // saveBtn is a css class
+
+      let $saveBtnIcon = $("<i></i>")
+      .addClass('fas fa-save') // btn-save is a css class
+      .attr('id',`saveid-${hourIndex}`)
+      .attr('save-id', hourIndex);
+
+
+
+
+      // ********* END of save button column section *********
 
      
-      // Add columnHour to rowContainer
-      $rowContainer.append($columnHour); // Test 1
+    
+      // Append columnHour to rowContainer
+      $rowContainer.append($columnHour); // Step 1
 
+      // Append descriptionColumn to the rowContainer
+      $rowContainer.append($descriptionColumn); // Step 2
+
+      // Append descriptionColumnSpan to the descriptionColumn
+      $descriptionColumn.append($descriptionColumnSpan); // Step 3
+
+      // Append saveButtonColumn to the rowContainer
+      $rowContainer.append($saveButtonColumn);
+    
+      // Append saveBtnIcon to the saveButtonColumn
+      $saveButtonColumn.append($saveBtnIcon);
+
+
+
+
+
+
+      // Appending to the main dailyPlannerContainer needs to go last to respect the DOM
       // Add rowContainer to dailyPlannerContainer
       $dailyPlannerContainer.append($rowContainer);
+
 
       // Appending section area END // 
 
