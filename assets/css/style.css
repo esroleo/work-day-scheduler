@@ -66,7 +66,10 @@ body {
 
   /* Remove input borders */
   input {
+	/* Make background transparent in order to see the row background color.*/
+	background-color: transparent; 
 	outline: none;
+	border: none;
   }
   
  

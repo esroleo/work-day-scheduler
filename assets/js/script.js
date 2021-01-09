@@ -1,3 +1,4 @@
+
 $(document).ready(function() { 
 
   // Get dailyPlannerContainer element using Jquery
@@ -17,7 +18,7 @@ $(document).ready(function() {
       // Index will be used on the span of the hour column "text"
       let hourIndex = hourOfDay - 9; // index on 9AM is = 0
 
-      // ********* START of the row div columns *********
+      // *** START of the row div columns ***
 
       // Generate row div columns.
       // Each row is an hour of the day.
@@ -27,9 +28,9 @@ $(document).ready(function() {
       .addClass('nonBootStrapRow') 
       .attr('hour-index',hourOfDay); // hourOfDay is the row hour
 
-      // ********* END of the row div columns *********  
+      // *** END of the row div columns ***  
 
-      // ********* START of the hour column *********
+      // *** START of the hour column ***
 
       // Append the hour of the row
       var $columnHour = $("<div></div>")
@@ -57,9 +58,9 @@ $(document).ready(function() {
       // Based on the hourOfDay switch we will assign the text to the columnHour
       $columnHour.text(columnHourly);
 
-     // ********* END of the hour column 
+     // *** END of the hour column 
 
-     // ********* START of description task column section *********
+     // *** START of description task column section ***
 
       // Create description column as an input elemnt
 
@@ -82,9 +83,9 @@ $(document).ready(function() {
       // We are going to use the hourIndex to access the task.
       $descriptionColumnSpan.val('Test 1234');
 
-      // ********* END of description task column section *********
+      // *** END of description task column section ***
 
-      // ********* START of save button column section *********
+      // *** START of save button column section ***
 
       let $saveButtonColumn = $("<div></div>")
       .addClass('col-md-1 saveBtn') // saveBtn is a css class
@@ -94,10 +95,7 @@ $(document).ready(function() {
       .attr('id',`saveid-${hourIndex}`)
       .attr('save-id', hourIndex);
 
-
-
-
-      // ********* END of save button column section *********
+      // *** END of save button column section ***
 
      
     
@@ -111,30 +109,69 @@ $(document).ready(function() {
       $descriptionColumn.append($descriptionColumnSpan); // Step 3
 
       // Append saveButtonColumn to the rowContainer
-      $rowContainer.append($saveButtonColumn);
+      $rowContainer.append($saveButtonColumn); // Step 4
     
       // Append saveBtnIcon to the saveButtonColumn
-      $saveButtonColumn.append($saveBtnIcon);
+      $saveButtonColumn.append($saveBtnIcon); // Step 5
+
+       // *** END of structure of grid appends***
+
+      // *** START for every hour update the color with a function ***
+      // *** Update color on each loop iteration until finished ***
+
+      // set row color based on time
+      taskRowColor($rowContainer, hourOfDay);
+    
+      // *** END of structure of grid appends ***
 
 
-
-
-
-
-      // Appending to the main dailyPlannerContainer needs to go last to respect the DOM
-      // Add rowContainer to dailyPlannerContainer
+      // *** Appending to the main dailyPlannerContainer needs to go last to respect the DOM ***
+      // *** Add rowContainer to dailyPlannerContainer // LAST STEP - Step 6 ***
       $dailyPlannerContainer.append($rowContainer);
 
+      // ********* END FOR LOOP ********  
 
-      // Appending section area END // 
+    
+    };
+  };
+
+  function taskRowColor($rowContainer,hourOfDay) {
+
+  
+    console.log($rowContainer);
+    
+
+    if (hourOfDay < 10) {
+
+      console.log("I am less than 10");
+
+     //$rowContainer.css("background-color","lightgrey");
+      //$descriptionColumn.css("background-color","lightgrey");
+     
+      $( "#input-0" ).css("background-color","lightgrey"); // Note IDs must be unique per page.
 
       
-    }
-   }
+
+      
+         
+    } else {
+
+      console.log("I am else");
+      //$rowContainer.css("background-color","purple");
+      $( "#input-0" ).css("background-color","#77dd77"); // Note IDs must be unique per page.
+      //$descriptionColumn.css("background-color","purple");
+    };
+  };
+
+
+
+
+
+
+   
 
   createGridSystem();
   //loadCurrentTime();
-
 
   
 });
