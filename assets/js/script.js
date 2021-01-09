@@ -20,15 +20,21 @@
       // Each row is an hour of the day.
       let $rowContainer = $("<div></div>")
       .addClass('row')
-      .addClass('plannerRow')
+      .addClass('nonBootStrapRow')
       .attr('hour-index',hourOfDay);
+
+      // Append the hour of the row
+
+      var $columnHour = $("<div></div>")
+      .addClass("col-md-2 hour")
+      .text("Test");
+
+      $rowContainer.append($columnHour);
+
       // add row to planner container
        $dailyPlannerContainer.append($rowContainer);
-
     }
-
- 
-  }
+   }
 
   createGridSystem();
   //loadCurrentTime();

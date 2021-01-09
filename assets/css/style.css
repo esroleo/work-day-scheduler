@@ -11,8 +11,9 @@ body {
 	color: #000000;
 	border-left: 1px solid black;
 	padding: 10px;
+		
   }
-  
+
   .jumbotron {
 	text-align: center;
 	background-color: transparent;
@@ -30,10 +31,11 @@ body {
 	border-radius: 15px;
   }
   
-  .row {
+  .nonBootStrapRow {
 	white-space: pre-wrap;
 	height: 80px;
 	border-top: 1px solid white;;
+	
   }
   
   .hour {
