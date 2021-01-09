@@ -1,33 +1,40 @@
-  // *** START of moment.js code
-
-  // Get current time in exactly as shown on mockup using moment.js!
-  // dddd = Today's date during the week
-  // [, ] escapte moment.js and add/append/concate text
-  // MMMM is this month in full name
-  // Do is todays date on this month
-  const headerDateTime = moment().format('dddd [, ] MMMM Do');
-
-  // Display the headerDateTime on the header section
-  $('#currentDay').text(headerDateTime);
-
-  // Get current hour to be passed used on taskRowColor(momentHour) function.
-
-  let momentHour = moment().format('H');
-  
-  // Change to inter for validation at function taskRowColor 
-
-  momentHour = Number(momentHour);
-
-  console.log(momentHour);
 
 
 
-  // *** END of moment.js code
+
 
 
 $(document).ready(function() { 
 
+  function getMomentNow () {
 
+    // Get current time in exactly as shown on mockup using moment.js!
+    // dddd = Today's date during the week
+    // [, ] escapte moment.js and add/append/concate text
+    // MMMM is this month in full name
+    // Do is todays date on this month
+    const headerDateTime = moment().format('dddd [, ] MMMM Do');
+  
+    // Display the headerDateTime on the header section
+    $('#currentDay').text(headerDateTime);
+  
+    // Get current hour to be passed used on taskRowColor(momentHour) function.
+  
+    let momentHour = moment().format('H');
+    
+    // Change to inter for validation at function taskRowColor 
+  
+    momentHour = Number(momentHour);
+  
+    return momentHour;
+  
+    console.log(momentHour);
+  
+    // *** END of moment.js code
+  
+    }
+
+  
 
   // Get dailyPlannerContainer element using Jquery
   // Contain all other children elements of the day planner app
@@ -163,7 +170,7 @@ $(document).ready(function() {
     };
   };
 
-  function taskRowColor(momentHour) {
+  function taskRowColor() {
      
 
     // Based on the "hour of the day" which is the hour of the row
@@ -171,34 +178,71 @@ $(document).ready(function() {
     // Else if hourOfDay > currentTime than the currentTime moment.js then lightgreen
     // else current hour will become red which is inminent
 
-    console.log("I am inside function of moment hour: " + momentHour)
+ 
+    momentHour = getMomentNow() // get time. momentHour Variable is now current
 
-    // To test change the < number to by smaller than your time for  1 hour.
+    console.log(momentHour);
+
+
+var i=0
+  
+  valueTest = $( "#input-" + i).attr("hour-index");
+  
+
+    //To test change the < number to by smaller than your time for  1 hour.
     //hourIndex = 3;
-    for (var i = 0; i < 9; i++) {
-      if (momentHour < 19) {
+    
+    console.log(valueTest)
+    console.log(typeof valueTest)
 
+
+    
+    hourIndex = $( "#input-" + i).attr("hour-index");
+    hourIndex = Number(hourIndex);
+    hourIndex += 9;
+
+    console.log(hourIndex)
+    console.log(typeof hourIndex)
+
+
+
+    for (var i = 0; i < 9; i++) {
+      if (hourIndex < momentHour) {
+
+        $( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
         //$rowContainer.css("background-color","lightgrey");
         //$descriptionColumn.css("background-color","lightgrey");
        
-        $( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
-      };
-    }
+        //$( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
+      } else if (hourIndex > momentHour) {
+      $( "#input-" + i ).css("background-color","#77dd77"); 
+      } else {
       
-    /*
+        $( "#input-" + i ).css("background-color","#ff6961"); 
+      }
+    };
+      
    
-    */
+    
   
 
 
   };
 
-   
+  getMomentNow() // Get current time
+  createGridSystem(); // Work on grid system creation and logic
+  taskRowColor() // Update tasks colors
 
-  createGridSystem();
-  taskRowColor(momentHour)
+
+  
+
+   
+  
   //loadCurrentTime();
 
   
 });
+
+
+
 
