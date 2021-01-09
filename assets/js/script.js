@@ -1,10 +1,9 @@
-//$(document).ready(function() { 
+$(document).ready(function() { 
 
   // Get dailyPlannerContainer element using Jquery
   let $dailyPlannerContainer = $('#dailyPlannerContainer');
 
   // Generate container as empty() for initialization
-  //$dailyPlannerContainer.empty();
 
   // Dynamically create dailyPlannerContainer appended elements 
 
@@ -41,5 +40,5 @@
 
 
   
-//});
+});
 
