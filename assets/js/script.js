@@ -1,6 +1,3 @@
-
-$(document).ready(function() { 
-
   // *** START of moment.js code
 
   // Get current time in exactly as shown on mockup using moment.js!
@@ -16,12 +13,19 @@ $(document).ready(function() {
   // Get current hour to be passed used on taskRowColor(momentHour) function.
 
   let momentHour = moment().format('H');
+  
+  // Change to inter for validation at function taskRowColor 
+
+  momentHour = Number(momentHour);
+
   console.log(momentHour);
 
 
 
   // *** END of moment.js code
 
+
+$(document).ready(function() { 
 
 
 
@@ -144,7 +148,7 @@ $(document).ready(function() {
       // *** Update color on each loop iteration until finished ***
 
       // set row color based on time "for loop hour of the day"
-      taskRowColor(hourOfDay);
+      //taskRowColor(hourOfDay);
     
       // *** END of structure of grid appends ***
 
@@ -159,48 +163,40 @@ $(document).ready(function() {
     };
   };
 
-  function taskRowColor(hourOfDay) {
-
-  
-    
+  function taskRowColor(momentHour) {
+     
 
     // Based on the "hour of the day" which is the hour of the row
     // If the hourOfDay is less than currentTime moment.js then lightgreyy
     // Else if hourOfDay > currentTime than the currentTime moment.js then lightgreen
     // else current hour will become red which is inminent
 
-    var hourIndex = 0;
-    
+    console.log("I am inside function of moment hour: " + momentHour)
 
-    if (hourOfDay < 10) {
+    // To test change the < number to by smaller than your time for  1 hour.
+    //hourIndex = 3;
+    for (var i = 0; i < 9; i++) {
+      if (momentHour < 19) {
 
-      console.log("I am less than 10");
-
-     //$rowContainer.css("background-color","lightgrey");
-      //$descriptionColumn.css("background-color","lightgrey");
-     
-      $( "#input-" + hourIndex ).css("background-color","lightgrey"); // Note IDs must be unique per page.
-
+        //$rowContainer.css("background-color","lightgrey");
+        //$descriptionColumn.css("background-color","lightgrey");
+       
+        $( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
+      };
+    }
       
-     
-         
-    } else {
+    /*
+   
+    */
+  
 
-      console.log("I am else");
-      //$rowContainer.css("background-color","purple");
-      $( "#input-" + hourIndex).css("background-color","#77dd77"); // Note IDs must be unique per page.
-      //$descriptionColumn.css("background-color","purple");
-    };
+
   };
-
-
-
-
-
 
    
 
   createGridSystem();
+  taskRowColor(momentHour)
   //loadCurrentTime();
 
   
