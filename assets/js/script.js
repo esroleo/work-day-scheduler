@@ -178,57 +178,42 @@ $(document).ready(function() {
     // Else if hourOfDay > currentTime than the currentTime moment.js then lightgreen
     // else current hour will become red which is inminent
 
+    // *** Update time of momentHour Variable to  now time in hours
  
     momentHour = getMomentNow() // get time. momentHour Variable is now current
 
-    console.log(momentHour);
+    //console.log(momentHour);
+
+    // *** If your current houris outside of 17 hours or 5 PM, please  modify below for testing ***
+    // *** For testing change the momentHour to 9-17 ***
+        // momentHour = 10; // Change HERE e.g 10 AM
+      
 
 
-var i=0
-  
- 
-  
-
-    //To test change the < number to by smaller than your time for  1 hour.
-    //hourIndex = 3;
-    
-    
-
-
-    
-    
-        // For testing change the momentHour to 9-16
-        momentHour = 12;
-
+    // *** START of getting each input task through the DOM and update its color
 
     for (var i = 0; i < 9; i++) {
 
-      //let valueTest = $( "#input-" + i).attr("hour-index");
 
-      let hourIndex = $( "#input-" + i).attr("hour-index");
-      hourIndex = Number(hourIndex);
-      hourIndex += 9;
-      console.log(hourIndex)
-      console.log(typeof hourIndex)
-     
+      // hour-index attribute contains the hour of the task column
+      let hourIndex = $( "#input-" + i).attr("hour-index"); 
+      hourIndex = Number(hourIndex); // Convert attribute to number for conditional check
+      hourIndex += 9; // Convert the hour-index value to hours readable numbers  
 
-      if (hourIndex < momentHour) {
+      if (hourIndex < momentHour) { // Verify if task column hour time is less than now in hours
 
-        $( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
-        //$rowContainer.css("background-color","lightgrey");
-        //$descriptionColumn.css("background-color","lightgrey");
-       
-        //$( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
-      } else if (hourIndex > momentHour) {
-      $( "#input-" + i ).css("background-color","#77dd77"); 
+        $( "#input-" + i ).css("background-color","lightgrey"); // Change CSS style to desired background color
+   
+      } else if (hourIndex > momentHour) { // Verify if task column hour time is later than now in hours
+      $( "#input-" + i ).css("background-color","#77dd77"); // Change CSS style to desired background color
       } else {
       
-        $( "#input-" + i ).css("background-color","#ff6961"); 
+        $( "#input-" + i ).css("background-color","#ff6961"); // Change CSS style to desired background color
       }
     };
       
    
-    
+    // *** END of getting each input task through the DOM and update its color
   
 
 
@@ -237,12 +222,6 @@ var i=0
   getMomentNow() // Get current time
   createGridSystem(); // Work on grid system creation and logic
   taskRowColor() // Update tasks colors
-
-
-  
-
-   
-  
   //loadCurrentTime();
 
   
