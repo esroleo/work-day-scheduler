@@ -168,9 +168,9 @@ body {
    /* This will be applied on any screen smaller than 575px */
    @media screen and  (max-width: 575px) {
 
-	.col-md-2, .col-md-9, .col-md-1 { /* Add more space between ros for smaller devices */
-		padding-right: 10px;
-		padding-left: 10px;
+	.col-md-2, .col-md-9, .col-md-1 { /* Add more space verticallyl between rows for smaller devices */
+		margin-bottom: 10px;
+		
 
 	}
 	
