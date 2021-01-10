@@ -1,12 +1,9 @@
+$(document).ready(function() { // Wait for the DOM to be ready for window., javascript/jquery and others
 
-
-
-
-
-
-$(document).ready(function() { 
 
   function getMomentNow () {
+
+    // *** START of moment.js code
 
     // Get current time in exactly as shown on mockup using moment.js!
     // dddd = Today's date during the week
