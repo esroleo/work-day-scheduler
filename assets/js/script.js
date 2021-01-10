@@ -111,11 +111,16 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       // Display task that was "get" from the local storage
       // We are going to use the hourIndex to access the task.
       //$descriptionColumnSpan.val('Test 1234');
+      
+      $descriptionColumnSpan.val(taskDescrArr[hourIndex]);
+
+
 
       // $descriptionColumnSpan.val( taskDescrArr[hourIndex] );
    
 
       // *** END of description task column section ***
+
 
       // *** START of save button column section ***
 
@@ -129,8 +134,9 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
       // *** END of save button column section ***
 
-     
-    
+
+      // *** START of steps to append to the DOM *** 
+
       // Append columnHour to rowContainer
       $rowContainer.append($columnHour); // Step 1
 
@@ -146,7 +152,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       // Append saveBtnIcon to the saveButtonColumn
       $saveButtonColumn.append($saveBtnIcon); // Step 5
 
-       // *** END of structure of grid appends***
+      // *** END of steps to append to the DOM *** 
 
       // *** START for every hour update the color with a function ***
       // *** Update color on each loop iteration until finished ***
@@ -165,6 +171,26 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
     
     };
+  };
+
+  function getTaskDetails () {
+
+    // *** For Testing enable the below remove item to test no storage ***
+    // window.localStorage.removeItem('dailyTasks');
+
+    // Get array from local storage
+    let localStorageTasks = JSON.parse(localStorage.getItem("dailyTasks"));
+
+    // Check if array is null and create new one again.
+
+    if (localStorageTasks === null) {
+      taskDescrArr =  new Array(9);
+    
+    } else { // Assign the localStorage values to the array
+      taskDescrArr = localStorageTasks;
+      console.log("Values from local Storage are: " + taskDescrArr);
+    };
+
   };
 
   function taskRowColor() {
@@ -230,17 +256,16 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       console.log(taskDescrArr);
 
       // Save the array to localStorage using JSON stringify
-      localStorage.setItem("storedPlans", JSON.stringify(taskDescrArr));
+      localStorage.setItem("dailyTasks", JSON.stringify(taskDescrArr));
 
   });  
     
-
-
  
   getMomentNow() // Get current time
+  getTaskDetails(); // Get array from local storage and stores it in array
   createGridSystem(); // Work on grid system creation and logic
   taskRowColor() // Update tasks colors
-  //loadCurrentTime();
+ 
 
   
 });
