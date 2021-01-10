@@ -176,7 +176,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
   function getTaskDetails () {
 
     // *** For Testing enable the below remove item to test no storage ***
-    // window.localStorage.removeItem('dailyTasks');
+    //window.localStorage.removeItem('dailyTasks');
 
     // Get array from local storage
     let localStorageTasks = JSON.parse(localStorage.getItem("dailyTasks"));
