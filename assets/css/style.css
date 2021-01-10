@@ -106,24 +106,28 @@ body {
 	color: white;
 	
 	/* Align button in the middle */
-
-	text-align: center;
-
-
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	
   }
 
   .btn-save {
+	  /*
 	border-left: 1px solid black;
 	border-top-right-radius: 15px;
 	border-bottom-right-radius: 15px;
 	background-color: #06AED5;
 	color: white;
+	*/
+	align-self: center;
+	
   }
   
 
   
   .saveBtn i:hover {
-	font-size: 20px;
+	font-size: 50px;
 	transition: all .3s ease-in-out;
   }
 

@@ -126,7 +126,7 @@ $(document).ready(function() {
       .addClass('col-md-1 saveBtn') // saveBtn is a css class
 
       let $saveBtnIcon = $("<i></i>")
-      .addClass('fas fa-save') // btn-save is a css class
+      .addClass('fas fa-save btn-save') // btn-save is a css class
       .attr('id',`saveid-${hourIndex}`)
       .attr('save-id', hourIndex);
 
