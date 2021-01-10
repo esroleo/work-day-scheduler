@@ -1,8 +1,10 @@
 $(document).ready(function() { // Wait for the DOM to be ready for window., javascript/jquery and others
 
+  // ** Declare a array that will hold all user tasks created text
+  taskDescrArr =  new Array(9);
 
-  function getMomentNow () {
-
+  function getMomentNow () {  
+  
     // *** START of moment.js code
 
     // Get current time in exactly as shown on mockup using moment.js!
@@ -16,20 +18,15 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
     $('#currentDay').text(headerDateTime);
   
     // Get current hour to be passed used on taskRowColor(momentHour) function.
-  
     let momentHour = moment().format('H');
     
-    // Change to inter for validation at function taskRowColor 
-  
+    // Change to from string to integer for validation at function taskRowColor 
     momentHour = Number(momentHour);
   
     return momentHour;
-  
-    console.log(momentHour);
-  
     // *** END of moment.js code
   
-    }
+  }
 
   
 
@@ -109,11 +106,14 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       .addClass('description taskDescriptionSpan') // Use provided css style class
       .attr('type', 'text') // Text input type
       .attr('id', `input-${hourIndex}`) // Create a index of the input for track purposes
-      .attr('hour-index', hourIndex);
+      .attr('hour-index', hourIndex); // To be used to change clors of the input task.
       
       // Display task that was "get" from the local storage
       // We are going to use the hourIndex to access the task.
-      $descriptionColumnSpan.val('Test 1234');
+      //$descriptionColumnSpan.val('Test 1234');
+
+      // $descriptionColumnSpan.val( taskDescrArr[hourIndex] );
+   
 
       // *** END of description task column section ***
 
@@ -125,7 +125,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       let $saveBtnIcon = $("<i></i>")
       .addClass('fas fa-save btn-save') // btn-save is a css class
       .attr('id',`saveid-${hourIndex}`)
-      .attr('save-id', hourIndex);
+      .attr('save-id', hourIndex); // Used for value tracking to store at local storage.
 
       // *** END of save button column section ***
 
@@ -168,8 +168,6 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
   };
 
   function taskRowColor() {
-     
-
     // Based on the "hour of the day" which is the hour of the row
     // If the hourOfDay is less than currentTime moment.js then lightgreyy
     // Else if hourOfDay > currentTime than the currentTime moment.js then lightgreen
@@ -185,8 +183,6 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
     // *** For testing change the momentHour to 9-17 ***
         // momentHour = 10; // Change HERE e.g 10 AM
       
-
-
     // *** START of getting each input task through the DOM and update its color
 
     for (var i = 0; i < 9; i++) {
@@ -212,10 +208,35 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
    
     // *** END of getting each input task through the DOM and update its color
   
-
-
   };
 
+    
+  $(document).on('click','i', function(event) {
+    event.preventDefault();  
+
+      // Allow click handler to run fully before it will listen to another event of click
+      event.preventDefault(); 
+    
+      // Get the save-id attribute to use as the position of the hour.
+      // This will in turn be used to store in the array index and save at local storage.
+    
+      let $localStorageIndex = $(this).attr('save-id');
+    
+      console.log($localStorageIndex);
+    
+      // Search the DOM for the columnHour input value and save it
+      
+      taskDescrArr[$localStorageIndex] = $( "#input-" + $localStorageIndex).val(); 
+      console.log(taskDescrArr);
+
+      // Save the array to localStorage using JSON stringify
+      localStorage.setItem("storedPlans", JSON.stringify(taskDescrArr));
+
+  });  
+    
+
+
+ 
   getMomentNow() // Get current time
   createGridSystem(); // Work on grid system creation and logic
   taskRowColor() // Update tasks colors
@@ -223,6 +244,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
   
 });
+
 
 
 
