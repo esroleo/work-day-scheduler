@@ -198,7 +198,7 @@ var i=0
     
     
         // For testing change the momentHour to 9-16
-        momentHour = 18;
+        momentHour = 12;
 
 
     for (var i = 0; i < 9; i++) {
