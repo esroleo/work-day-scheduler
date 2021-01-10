@@ -186,27 +186,32 @@ $(document).ready(function() {
 
 var i=0
   
-  valueTest = $( "#input-" + i).attr("hour-index");
+ 
   
 
     //To test change the < number to by smaller than your time for  1 hour.
     //hourIndex = 3;
     
-    console.log(valueTest)
-    console.log(typeof valueTest)
+    
 
 
     
-    hourIndex = $( "#input-" + i).attr("hour-index");
-    hourIndex = Number(hourIndex);
-    hourIndex += 9;
-
-    console.log(hourIndex)
-    console.log(typeof hourIndex)
-
+    
+        // For testing change the momentHour to 9-16
+        momentHour = 18;
 
 
     for (var i = 0; i < 9; i++) {
+
+      //let valueTest = $( "#input-" + i).attr("hour-index");
+
+      let hourIndex = $( "#input-" + i).attr("hour-index");
+      hourIndex = Number(hourIndex);
+      hourIndex += 9;
+      console.log(hourIndex)
+      console.log(typeof hourIndex)
+     
+
       if (hourIndex < momentHour) {
 
         $( "#input-" + i ).css("background-color","lightgrey"); // Note IDs must be unique per page.
