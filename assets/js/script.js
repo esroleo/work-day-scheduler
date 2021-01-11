@@ -211,7 +211,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
     // *** If your current houris outside of 17 hours or 5 PM, please  modify below for testing ***
     // *** For testing change the momentHour to 9-17 ***
-        momentHour = 10; // Change HERE e.g 10 AM
+       // momentHour = 10; // Change HERE e.g 10 AM
       
     // *** START of getting each input task through the DOM and update its color
 
