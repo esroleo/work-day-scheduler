@@ -106,6 +106,8 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	transition: all 2s ease-in-out;
+
 	
   }
 
@@ -120,10 +122,12 @@ body {
 	align-self: center;
 	
   }
+
+
     
   .saveBtn i:hover {
 	font-size: 25px;
-	transition: all .3s ease-in-out;
+
   }
 
 

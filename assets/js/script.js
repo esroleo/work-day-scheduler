@@ -238,7 +238,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
     
   $(document).on('click','i', function(event) {
-    event.preventDefault();  
+   
 
       // Allow click handler to run fully before it will listen to another event of click
       event.preventDefault(); 
@@ -259,6 +259,10 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       localStorage.setItem("dailyTasks", JSON.stringify(taskDescrArr));
 
   });  
+
+
+
+
     
  
   getMomentNow() // Get current time
