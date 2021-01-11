@@ -74,13 +74,17 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       // Take hourOfDay variable from the loop and assign proper AM/PM values
       switch(hourOfDay) {
         case 9: case 10: case 11:
-          columnHourly = hourOfDay + " AM";
+          columnHourly = hourOfDay + "AM";
           break
         //case 12: case 13: case 14: case 15: case 16: case 17:
         //  columnHourly = hourOfDay + " PM";
          // break  
+        case 12:
+          columnHourly = hourOfDay + "PM";
+          break
+
         default: // All other values 
-          columnHourly = hourOfDay + " PM";
+          columnHourly = (hourOfDay-12) + "PM";
           break  
       }
 
@@ -248,12 +252,12 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
     
       let $localStorageIndex = $(this).attr('save-id');
     
-      console.log($localStorageIndex);
+      //console.log($localStorageIndex);
     
       // Search the DOM for the columnHour input value and save it
       
       taskDescrArr[$localStorageIndex] = $( "#input-" + $localStorageIndex).val(); 
-      console.log(taskDescrArr);
+      //console.log(taskDescrArr);
 
       // Save the array to localStorage using JSON stringify
       localStorage.setItem("dailyTasks", JSON.stringify(taskDescrArr));
