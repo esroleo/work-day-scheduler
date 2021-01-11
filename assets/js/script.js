@@ -114,7 +114,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       
       // Display task that was "get" from the local storage
       // We are going to use the hourIndex to access the task.
-      //$descriptionColumnSpan.val('Test 1234');
+  
       
       $descriptionColumnSpan.val(taskDescrArr[hourIndex]);
 
@@ -211,7 +211,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
 
     // *** If your current houris outside of 17 hours or 5 PM, please  modify below for testing ***
     // *** For testing change the momentHour to 9-17 ***
-        // momentHour = 10; // Change HERE e.g 10 AM
+        momentHour = 10; // Change HERE e.g 10 AM
       
     // *** START of getting each input task through the DOM and update its color
 
@@ -266,6 +266,7 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       // Save the array to localStorage using JSON stringify
       localStorage.setItem("dailyTasks", JSON.stringify(taskDescrArr));
 
+      
   });  
 
 
