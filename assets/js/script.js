@@ -257,6 +257,10 @@ $(document).ready(function() { // Wait for the DOM to be ready for window., java
       // Search the DOM for the columnHour input value and save it
       
       taskDescrArr[$localStorageIndex] = $( "#input-" + $localStorageIndex).val(); 
+
+     
+      // Remove the outline after saving
+      $( "#input-" + $localStorageIndex ).css("outline: #4CAF50 solid 10px");
       //console.log(taskDescrArr);
 
       // Save the array to localStorage using JSON stringify

@@ -68,9 +68,14 @@ body {
   input {
 	/* Make background transparent in order to see the row background color.*/
 	background-color: transparent; 
-	outline: none;
 	border: none;
   }
+
+  input:focus, textarea:focus {
+	outline:  #0066ff solid 1px;
+
+  }
+
   
  
   .hour {
@@ -127,6 +132,7 @@ body {
     
   .saveBtn i:hover {
 	font-size: 25px;
+	
 
   }
 
